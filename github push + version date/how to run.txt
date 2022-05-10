@@ -1,5 +1,14 @@
 Copy these files to your main project folder directory in Filza
 
+Edit the following 3 lines inside push.sh
+commitFile='update.txt' #where you keep track of your updates
+
+debName="420Tools" #deb name when it gets moved to your repo folder
+
+repoReleaseFolder="/path/to/your/repo/debs/"
+
+-----------------------------------
+
 Open terminal as root and enter the following commands
 
 cd /to/your/project/folder
