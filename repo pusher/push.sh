@@ -8,14 +8,14 @@ commitFile='update.txt'
 git add .
 
 if test -f "$commitFile"; then
-	while read line; do  
+	for line in $(<$commitFile); do
 		if [[ $commitMsg == "" ]]; then
 			commitMsg="${line}"
 		else  
 			commitMsg="$commitMsg
 $line"
 		fi 
-	done < $commitFile
+	done
 fi
 while [[ $commitMsg == "" ]];
 do

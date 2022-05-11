@@ -44,7 +44,7 @@ updateVersion $control $controlFind
 
 #"
 if ([[ $controlVersion == $makefileVersion ]] && [[ $oldControlVersion != $controlVersion ]] && [[ $oldMakefileVersion != $makefileVersion ]]) || ([[ $makefileVersion == 0 ]] && [[ $oldControlVersion != $controlVersion ]]); then
-	echo -e "\e[1;32mVERSION INCREMENTATION SUCCESSFUL\e[0m"
+	echo -e "\n\n\e[1;32mVERSION INCREMENTATION SUCCESSFUL\e[0m\n\e[31m$oldControlVersion\e[0m => \e[1;34m$controlVersion\n\n\e[0m"
 else
 	echo -e "\e[31mVERSION INCREMENTATION FAILED\e[0m
 CONTROL: $controlVersion
