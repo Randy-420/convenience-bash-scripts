@@ -19,20 +19,18 @@ $line"
 fi
 while [[ $commitMsg == "" ]];
 do
-	if [[ $commitMsg == "" ]]; then
-		echo "Enter your commit message: "
-		while read tmsg; do
-			if [[ $tmsg == "" ]]; then
-				break
-			fi
-			if [[ "$commitMsg" == "" ]]; then
-				commitMsg="$tmsg"
-			else
-				commitMsg="$commitMsg
+	echo "Enter your commit message: "
+	while read tmsg; do
+		if [[ $tmsg == "" ]]; then
+			break
+		fi
+		if [[ "$commitMsg" == "" ]]; then
+			commitMsg="$tmsg"
+		else
+			commitMsg="$commitMsg
 $tmsg"
-			fi
-		done
-	fi
+		fi
+	done
 done
 echo "" > $commitFile
 git commit -m "$commitMsg"

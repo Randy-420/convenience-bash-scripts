@@ -2,7 +2,8 @@
 start=$(date +%s)
 
 commitFile='update.txt'
-debName="420Tools"
+debName="ftt"
+tweak="Flex To Theos"
 repoReleaseFolder="/var/mobile/tweaks/mine/repo/debs/"
 
 . ./version.sh
@@ -29,26 +30,29 @@ $line"
 		fi 
 	done < $commitFile
 fi
-while [[ $commitMsg == "" ]];
-do
-	if [[ $commitMsg == "" ]]; then
-		echo "Enter your commit message: "
-		while read tmsg; do
-			if [[ $tmsg == "" ]]; then
-				break
-			fi
-			if [[ "$commitMsg" == "" ]]; then
-				commitMsg="$tmsg"
-			else
-				commitMsg="$commitMsg
+while [[ $commitMsg == "" ]]; do
+	echo "Enter your commit message: "
+	while read tmsg; do
+		if [[ $tmsg == "" ]]; then
+			break
+		fi
+		if [[ "$commitMsg" == "" ]]; then
+			commitMsg="$tmsg"
+		else
+			commitMsg="$commitMsg
 $tmsg"
-			fi
-		done
-	fi
+		fi
+	done
 done
 echo "" > $commitFile
 git commit -m "$commitMsg"
 git push
+
+directory=$(pwd)
+cd "$repoReleaseFolder"
+cd "../"
+echo -e "-~-$tweak-~-\n$commitMsg\n\n" >> $commitFile
+cd "$directory"
 
 end=$(date +%s)
 time=$(expr $end - $start)
