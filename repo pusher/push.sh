@@ -1,6 +1,7 @@
 #!/bin/bash
 start=$(date +%s)
 
+IFS="\n"
 commitFile='update.txt'
 
 . ./gen.sh

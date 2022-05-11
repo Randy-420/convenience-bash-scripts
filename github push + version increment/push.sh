@@ -20,6 +20,7 @@ make clean package
 cp DEBs/* $repoReleaseFolder$debName.deb
 
 git add .
+IFS="\n"
 if test -f "$commitFile"; then
 	for line in $(<$commitFile); do
 		if [[ $commitMsg == "" ]]; then
